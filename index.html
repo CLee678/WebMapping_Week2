@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaflet Map with US Cities</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+</head>
+<body>
+
+  <div id="map" style="width: 600px; height: 400px;"></div>
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+  <script>
+    var map = L.map('map').setView([39.9526, -75.1652], 6)
+// OR
+//  var map = L.map('map',{
+        //center: [37, -100],
+        //zoom: 3
+    //}]
+
+
+    //tile layer, with 'addTo' method/function
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+
+    //markers, another kind of class
+    var washingtondc = L.marker([38.9072, -77.0369]).addTo(map)
+      .bindPopup('Washington DC, Capital');
+
+    var philadelphia = L.marker([39.9526, -75.1652]).addTo(map)
+      .bindPopup('Philadelphia, Pennsylvania');
+
+    var newYork = L.marker([40.7128, -74.0059]).addTo(map)  
+      .bindPopup('New York City, New York');
+  </script>
+
+</body>
+</html>
